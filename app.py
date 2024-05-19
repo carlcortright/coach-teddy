@@ -22,12 +22,15 @@ def webhook():
         calls = client.list_calls(client_number=client_number, limit=10)
 
         # Set the context to have the calls and their transcripts
-        context = ''
-        for call in calls['calls']:
-            call_date = call['created_at'][:10]  # Extract the date portion from the timestamp
-            context += f"Call ID: {call['id']}\nDate: {call_date}\nTranscript: {call['transcript']}\n\n"
+        context = 'Previous calls this client has had with coach teddy: \n\n'
+        for i, enumeratedcall in enumerate(calls['calls']):
+            call_date = enumeratedcall['created_at'][:10]  # Extract the date portion from the timestamp
+            transcript = enumeratedcall['transcript']
+            if transcript is not None:
+                transcript = transcript[1:]
+            if transcript and i != 0:  # Skip the first item in the transcript
+                context += f"Call ID: {enumeratedcall['id']}\nDate: {call_date}\nTranscript: {transcript}\n\n"
 
-        # Update the call context
         client.set_call_context(call['id'], context)
 
     return jsonify({'status': 'success'})
