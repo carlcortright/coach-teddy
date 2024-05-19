@@ -1,0 +1,13 @@
+steps:
+  # Build the Docker image for the API
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/coach-teddy', '-f', './Dockerfile', '.']
+
+  # Push the image to Google Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/coach-teddy']
+
+images:
+  - 'gcr.io/$PROJECT_ID/coach-teddy'
+
+timeout: '1200s'  # 20 minutes
