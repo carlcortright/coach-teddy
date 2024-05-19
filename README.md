@@ -1,1 +1,1 @@
-# coach-teddy
+# Coach Teddy
