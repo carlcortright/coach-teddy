@@ -1,5 +1,7 @@
 # Coach Teddy API
 
+> Call him +1 (316) 669-7437
+
 Coach Teddy is a conversational AI agent specifically designed for startup founders. The agent listens to the problems faced by founders and provides constructive solutions to help them overcome challenges and grow their businesses.
 
 This project provides an API for handling webhook events from the Flyflow platform. It listens for `call_started` events, retrieves the 10 most recent calls for the client number associated with the call, and sets the context of the call to include the call dates, IDs, and transcripts. This context is then used by Coach Teddy to provide personalized guidance and support to the founders.
